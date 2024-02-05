@@ -1,3 +1,5 @@
+
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -15,11 +17,17 @@
   
 }
 
-
+.container {
+  position: relative;
+}
 .navigation {
   display: flex;
-  gap: 40px;
-  justify-content: space-around;
+  position: absolute;
+  top: -80px; /* Adjust this value to move the navigation up or down */
+  right: -300px; 
+  justify-content: flex-end;
+  gap: 10px;
+  justify-content:center;
   align-items: center;
 }
 
@@ -27,9 +35,10 @@
   text-decoration: none;
   color: var(--font-words-color);
   font-weight: bold;
-  padding: 10px;
-
+  padding: 20px;
+  border-radius: 6px;
   border-radius: 5px;
+  font-size: 20px;
 }
 
 a {
@@ -44,12 +53,15 @@ a:hover {
 body {
   margin: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
   min-width: 300px;
-  min-height: 50vh;
+  min-height: 100vh;
   padding: 0;
-  background-image: url('path/to/your/image.webp');
+  background-image: url('https://raw.githubusercontent.com/GravesStone/sunrise/main/imges/hero.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; /* Optional: adjusts the background image size to cover the entire element */
 }
 
 header {
@@ -81,6 +93,15 @@ h1 {
     color: #fff; /* Example text color */
    
   }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 2; }
+  }
+
+  /* Apply the fade-in animation to an element */
+  .fade-in {
+    animation: fadeIn 2s ease-in-out forwards;
+  }
 
   .hero h1 {
     font-size: 36px;
@@ -90,7 +111,30 @@ h1 {
   .hero p {
     font-size: 18px;
   }
-  
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+/* On hover, change background color */
+.button:hover {
+    background-color: #45a049;
+}
+
+/* On click, change background color */
+.button:active {
+    background-color: #3e8e41;
+}
 
 
 .logo {

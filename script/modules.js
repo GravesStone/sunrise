@@ -5,9 +5,9 @@ export function loadHeader() {
   <div class="container">
       <nav class="navigation">
         <a href="#">Home</a>
+        <a href="#">Search</a>
+        <a href="#">Status</a>
         <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
       </nav>
 </div>
   `;
@@ -22,4 +22,19 @@ export function loadFooter() {
       <p>&copy; ${new Date().getFullYear()} wdd330-Final Project Mark Estimada</p>
   `;
 }
+
+export function fadeInContent() {
+  var content = document.getElementById('heroSection');
+  
+  // Add the fade-in class
+  content.classList.add("fade-in");
+}
+
+// Export fadeInContent function to global scope
+window.fadeInContent = fadeInContent;
+
+// Call fadeInContent function when the page loads
+window.onload = function() {
+  fadeInContent();
+};
 
