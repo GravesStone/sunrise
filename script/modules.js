@@ -23,8 +23,3 @@ export function loadFooter() {
   `;
 }
 
-// Load header and footer when the page loads
-window.onload = function() {
-  loadHeader();
-  loadFooter();
-};
