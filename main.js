@@ -1,24 +1,29 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+import { loadFooter,loadHeader} from './script/modules.js'
 
-setupCounter(document.querySelector('#counter'))
+
+
+
+window.addEventListener('DOMContentLoaded', function() {
+    // Create elements
+    var heroSection = document.getElementById('heroSection');
+    var heroContent = document.createElement('div');
+    var heading = document.createElement('h2');
+    var paragraph = document.createElement('p');
+    
+    // Set content
+    heading.textContent = 'Welcome to Sun Arise';
+    paragraph.textContent = 'This is the hero section of our webpage.';
+    
+    // Add classes
+    heroContent.classList.add('hero-content');
+    
+    // Append elements to the hero section
+    heroContent.appendChild(heading);
+    heroContent.appendChild(paragraph);
+    heroSection.appendChild(heroContent);
+  });
+
+  loadFooter();
+  loadHeader();

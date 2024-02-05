@@ -2,20 +2,39 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  --font-words-color: #F0EBDB;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
+  
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  
+}
+
+
+.navigation {
+  display: flex;
+  gap: 20px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: var(--font-words-color);
+  font-weight: bold;
+  padding: 10px;
+
+  border-radius: 5px;
 }
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--font-words-color);
   text-decoration: inherit;
 }
 a:hover {
@@ -24,10 +43,17 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
-  min-width: 320px;
+  min-width: 500px;
   min-height: 100vh;
+ 
+}
+
+header {
+  grid-column: 2/5;
+  display: flex;
 }
 
 h1 {
@@ -35,7 +61,30 @@ h1 {
   line-height: 1.1;
 }
 
+.hero {
+  grid-column: 2/4;
+}
+
+  .hero {
+   
+    padding: 50px;
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+  
 #app {
+  grid-column: 1/2;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -62,7 +111,10 @@ h1 {
 .read-the-docs {
   color: #888;
 }
+footer{
+  grid-column: 1/2;
 
+}
 button {
   border-radius: 8px;
   border: 1px solid transparent;
