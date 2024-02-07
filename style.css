@@ -168,8 +168,27 @@ button:focus-visible {
 
 /*======== Body Weather / weatherstatus =========*/
 .body-status{
-  
+  background-image: url('https://raw.githubusercontent.com/GravesStone/sunrise/main/imges/herostatus.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; /* Optional: adjusts the background image size to cover the entire element */
+
 }
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 200px; /* Adjust width as needed */
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
 
 @media only screen and (max-width: 768px) {
   body{
