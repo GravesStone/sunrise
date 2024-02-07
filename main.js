@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', function() {
     // Add event listener to the button
     button.addEventListener('click', function() {
         // Replace the URL with the desired link
-        window.location.href = 'weathersearch.html'; // Replace 'https://example.com' with your desired URL
+        window.location.href = 'weatherstatus.html'; // Replace 'https://example.com' with your desired URL
     });
 });
 

@@ -2,14 +2,18 @@
 export function loadHeader() {
   const header = document.getElementById('header');
   header.innerHTML = `
-  <div class="container">
-      <nav class="navigation">
-        <a href="#">Home</a>
-        <a href="#">Search</a>
-        <a href="#">Status</a>
-        <a href="#">About</a>
-      </nav>
-</div>
+  <div class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <ul class="menu" id="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
   `;
 }
 
