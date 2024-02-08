@@ -1,7 +1,7 @@
 
 export function loadHeader() {
   const header = document.getElementById('header');
-  const linksearch = './weathersearch.html';
+
   header.innerHTML = `
   
   <div class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">
@@ -11,7 +11,7 @@ export function loadHeader() {
     </div>
     <ul class="menu" id="menu">
       <li><a href="#">Home</a></li>
-      <li><a href="${linksearch}">Search</a></li>
+      <li><a href="weathersearch.html">Search</a></li>
       <li><a href="#">Status</a></li>
       <li><a href="#">About</a></li>
     </ul>
