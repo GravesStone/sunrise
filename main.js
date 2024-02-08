@@ -1,6 +1,6 @@
 import './style.css'; // Import CSS file
 
-import { loadFooter, fadeInContent, loadHeader } from './script/modules.js';
+import { loadFooter, fadeInContent} from './script/modules.js';
 
 window.addEventListener('DOMContentLoaded', function() {
     // Create elements
@@ -34,13 +34,8 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-const links = [
-    { text: 'Home', url: 'index.html' },
-    { text: 'About', url: 'search.html' },
-    { text: 'Services', url: '#' },
-    { text: 'Contact', url: '#' }
-];
 
-loadHeader(links);
+
+
 loadFooter();
 fadeInContent();

@@ -1,38 +1,10 @@
 
+export function setupHamburgerMenu(hamburgerSelector, navLinksSelector) {
+  const hamburger = document.querySelector(hamburgerSelector);
+  const navLinks = document.querySelector(navLinksSelector);
 
-export function loadHeader(links) {
-  const header = document.getElementById('header');
-  
-  if (!Array.isArray(links)) {
-      console.error("Error: 'links' parameter must be an array.");
-      return;
-  }
-
-  header.innerHTML = `
-      <nav id="main-nav">
-          <ul>
-              ${links.map(link => `<li><a href="${link.url}">${link.text}</a></li>`).join('')}
-          </ul>
-          <div class="hamburger-menu">&#9776;</div> <!-- Hamburger menu icon -->
-      </nav>
-  `;
-
-  const nav = document.getElementById('main-nav');
-  const hamburgerMenu = nav.querySelector('.hamburger-menu');
-  const navLinks = nav.querySelector('ul');
-
-  // Toggle visibility of navigation links when hamburger menu icon is clicked
-  hamburgerMenu.addEventListener('click', function() {
-      navLinks.classList.toggle('show');
-  });
-
-  const allNavLinks = document.querySelectorAll('#main-nav ul li a');
-  allNavLinks.forEach(navLink => {
-      navLink.addEventListener('click', function(event) {
-          allNavLinks.forEach(link => link.classList.remove('active'));
-          event.target.classList.add('active');
-          event.preventDefault();
-      });
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
   });
 }
 
