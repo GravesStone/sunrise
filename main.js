@@ -16,7 +16,7 @@ import { loadFooter,loadHeader,fadeInContent} from './script/modules.js'
         paragraph.textContent = 'Embrace the dawn of a new day';
         paragraph2.textContent = 'where each sunrise paints the sky with endless possibilities.';
         link.textContent = 'See more weather status'; // Set anchor text
-        link.href = 'weatherstatus.html'; // Set anchor href
+        link.href = 'indexcopy.html'; // Set anchor href
     
         // Add classes
         heroContent.classList.add('hero-content');
