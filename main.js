@@ -1,6 +1,6 @@
 import './style.css'
 
-import { loadFooter,loadHeader,fadeInContent} from './script/modules.js'
+import { loadFooter,fadeInContent} from './script/modules.js'
 
 
 
@@ -40,5 +40,5 @@ window.addEventListener('DOMContentLoaded', function() {
 //Fade in Effect
 
 loadFooter();
-loadHeader();
+
 fadeInContent();
