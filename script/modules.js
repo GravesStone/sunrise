@@ -2,6 +2,7 @@
 export function loadHeader() {
   const header = document.getElementById('header');
   header.innerHTML = `
+  
   <div class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">
       <div class="bar"></div>
       <div class="bar"></div>
@@ -13,7 +14,6 @@ export function loadHeader() {
       <li><a href="#">Services</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
-  </nav>
   `;
 }
 
