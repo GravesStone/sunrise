@@ -1,6 +1,6 @@
 import './style.css'
 
-import { loadFooter,fadeInContent} from './script/modules.js'
+import { loadFooter,fadeInContent ,createNavigationLinks} from './script/modules.js'
 
 
 
@@ -33,12 +33,29 @@ window.addEventListener('DOMContentLoaded', function() {
     // Add event listener to the button
     button.addEventListener('click', function() {
         // Replace the URL with the desired link
-        window.location.href = '/search.html'; // Replace 'https://example.com' with your desired URL
+        window.location.href = 'status.html'; // Replace 'https://example.com' with your desired URL
     });
 });
+
+window.onload = function() {
+    createNavigationLinks();
+    toggleMenu();
+};
+
+// Function to toggle the menu visibility
+function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    const navList = document.querySelector('.nav-list');
+    const hamburger = document.querySelector('.hamburger');
+
+    hamburger.addEventListener('click', () => {
+        navList.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+}
 
 //Fade in Effect
 
 loadFooter();
-
+createNavigationLinks();
 fadeInContent();

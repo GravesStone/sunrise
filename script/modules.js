@@ -1,4 +1,34 @@
 
+// navigation.js
+export function createNavigationLinks() {
+  const navList = document.querySelector('.nav-list');
+  
+  // Array of page names and their corresponding URLs
+  const pages = [
+      { name: 'Home', url: 'index.html' },
+      { name: 'About', url: 'about.html' },
+      { name: 'Services', url: 'services.html' },
+      { name: 'Contact', url: 'contact.html' }
+  ];
+
+  // Loop through the pages array
+  pages.forEach(page => {
+      // Create a list item element
+      const listItem = document.createElement('li');
+      listItem.classList.add('nav-item');
+      
+      // Create an anchor element
+      const link = document.createElement('a');
+      link.href = page.url;
+      link.textContent = page.name;
+      
+      // Append the anchor element to the list item
+      listItem.appendChild(link);
+      
+      // Append the list item to the navigation list
+      navList.appendChild(listItem);
+  });
+}
 
 
 
