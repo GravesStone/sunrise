@@ -1,6 +1,6 @@
 import './style.css'; // Import CSS file
 
-import { loadFooter, fadeInContent} from './script/modules.js';
+import { loadFooter, fadeInContent,setupHamburgerMenu} from './script/modules.js';
 
 window.addEventListener('DOMContentLoaded', function() {
     // Create elements
@@ -36,6 +36,6 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
 
-
+setupHamburgerMenu();
 loadFooter();
 fadeInContent();
