@@ -25,7 +25,8 @@ export function loadFooter() {
   const footer = document.getElementById('footer');
   footer.innerHTML = `
       <p>&copy; ${new Date().getFullYear()} wdd330-Final Project Mark Estimada</p>
-  `;
+      <a href="/weatherstatus.html">test link</a>
+      `;
 }
 
 export function fadeInContent() {
