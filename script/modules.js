@@ -1,9 +1,7 @@
 
 export function loadHeader() {
   const header = document.getElementById('header');
-
   header.innerHTML = `
-  
   <div class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">
       <div class="bar"></div>
       <div class="bar"></div>
@@ -11,7 +9,7 @@ export function loadHeader() {
     </div>
     <ul class="menu" id="menu">
       <li><a href="#">Home</a></li>
-      <li><a href="weathersearch.html">Search</a></li>
+      <li><a href="https://blog.hubspot.com/website/css-fade-in">Search</a></li>
       <li><a href="#">Status</a></li>
       <li><a href="#">About</a></li>
     </ul>
