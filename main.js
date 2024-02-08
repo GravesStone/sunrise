@@ -1,9 +1,6 @@
-import './style.css'
+import './style.css'; // Import CSS file
 
-import { loadFooter,fadeInContent ,createNavigationLinks} from './script/modules.js'
-
-
-
+import { loadFooter, fadeInContent, loadHeader } from './script/modules.js';
 
 window.addEventListener('DOMContentLoaded', function() {
     // Create elements
@@ -37,25 +34,13 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-window.onload = function() {
-    createNavigationLinks();
-    toggleMenu();
-};
+const links = [
+    { text: 'Home', url: 'index.html' },
+    { text: 'About', url: 'search.html' },
+    { text: 'Services', url: '#' },
+    { text: 'Contact', url: '#' }
+];
 
-// Function to toggle the menu visibility
-function toggleMenu() {
-    const menu = document.querySelector('.menu');
-    const navList = document.querySelector('.nav-list');
-    const hamburger = document.querySelector('.hamburger');
-
-    hamburger.addEventListener('click', () => {
-        navList.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    });
-}
-
-//Fade in Effect
-
+loadHeader(links);
 loadFooter();
-createNavigationLinks();
 fadeInContent();

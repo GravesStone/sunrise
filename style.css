@@ -18,28 +18,45 @@
 
   
 }
-.nav-list {
-  list-style: none;
+.header{
+  position: absolute;
+  top: 10%;
+  right: 20%;
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
   padding: 0;
-  display: none; /* Hide the navigation links by default */
 }
-.nav-item {
-  display: block;
-  margin-bottom: 10px;
+
+/* Style for navigation links */
+nav ul li {
+  display: inline;
+  margin-right: 20px;
 }
-.hamburger {
-  display: block;
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ccc;
+}
+
+/* Style for the active link */
+nav ul li a.active {
+  font-weight: bold;
+}
+
+/* Hamburger menu icon */
+.hamburger-menu {
+  display: none; /* Hidden by default */
   cursor: pointer;
 }
-/* Styles for the hamburger icon */
-.hamburger div {
-  width: 25px;
-  height: 3px;
-  background-color: #333;
-  margin: 5px 0;
-}
-
-
 
 body {
   margin: 0;
@@ -55,10 +72,7 @@ body {
   background-size: cover; /* Optional: adjusts the background image size to cover the entire element */
 }
 
-header {
-  grid-column: 2/5;
-  display: flex;
-}
+
 /* Styles for hero section */
 #heroSection {
   background-color: var(--secondary-color);
@@ -216,21 +230,12 @@ button:hover {
     min-width: 0;
   }
 
-  .menu {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 0;
+  nav ul {
+    display: none; /* Hide navigation links by default */
   }
 
-  .menu-toggle {
-    display: flex;
-  }
-
-  /* Style for the show-menu class to show the menu */
-  .menu.show-menu {
-    display: flex;
-    justify-content: center; /* Center the links horizontally */
+  .hamburger-menu {
+    display: block; /* Display hamburger menu icon for mobile devices */
+    padding: 10px;
   }
 }
