@@ -1,90 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hamburger Nav</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-    .navbar {
-      background-color: #333;
-      padding: 15px;
-      display: flex;
-      justify-content: space-between; /* Centers the logo and hamburger */
-      align-items: center; /* Aligns items vertically */
-    }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
 
-    .logo img {
-      max-width: 100px; /* Adjust the width as needed */
-    }
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+        }
 
-    .menu {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
 
-    .menu li {
-      display: inline-block;
-      margin-right: 20px;
-    }
+        button:hover {
+            background-color: #45a049;
+        }
 
-    .menu li a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-    }
+        #currentWeatherInfo {
+            margin-top: 20px;
+        }
 
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
+        #forecastInfo {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-    .line {
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-      margin: 5px 0;
-    }
+        .card {
+            width: 200px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    @media screen and (max-width: 768px) {
-      .menu {
-        display: none;
-      }
-      .hamburger {
-        display: flex;
-      }
-    }
-  </style>
+        .weather-icon {
+            width: 50px;
+            height: 50px;
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">
-      <img src="logo.png" alt="Logo">
+    <div class="container">
+        <h1>Weather App</h1>
+        <input type="text" id="cityInput" placeholder="Enter city name">
+        <button id="searchBtn">Search</button>
+        <div id="currentWeatherInfo"></div>
+        <div id="forecastInfo"></div>
     </div>
-    <div class="hamburger" onclick="toggleMenu()">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </div>
-    <ul class="menu">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
 
-  <script>
-    function toggleMenu() {
-      var menu = document.querySelector('.menu');
-      menu.classList.toggle('active');
-    }
-  </script>
+    <script>
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            const city = document.getElementById('cityInput').value.trim();
+            if (city !== '') {
+                getWeather(city);
+                getForecast(city);
+            }
+        });
+
+        function getWeather(city) {
+            const apiKey = '15afb914adc211c491651741ae88beb9'; // Replace with your OpenWeather API key
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    displayCurrentWeather(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching current weather:', error);
+                });
+        }
+
+        function displayCurrentWeather(data) {
+            const currentWeatherInfo = document.getElementById('currentWeatherInfo');
+            currentWeatherInfo.innerHTML = '';
+
+            if (data.cod === '404') {
+                currentWeatherInfo.textContent = 'Enter not found';
+            } else {
+                const cityName = data.name;
+                const temperature = Math.round(data.main.temp - 273.15); // Convert temperature from Kelvin to Celsius
+                const description = data.weather[0].description;
+                const iconCode = data.weather[0].icon;
+                const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+                const humidity = data.main.humidity;
+                const windSpeed = data.wind.speed;
+                const windChill = calculateWindChill(temperature, windSpeed);
+
+                const weatherText = `${cityName}: ${temperature}°C, ${description}, Humidity: ${humidity}%, Wind Chill: ${windChill}°C`;
+                const weatherIcon = `<img src="${iconUrl}" alt="Weather Icon" class="weather-icon">`;
+
+                currentWeatherInfo.innerHTML = weatherText + weatherIcon;
+            }
+        }
+
+        function getForecast(city) {
+            const apiKey = '15afb914adc211c491651741ae88beb9'; // Replace with your OpenWeather API key
+            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    displayForecast(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching forecast:', error);
+                });
+        }
+
+        function displayForecast(data) {
+            const forecastInfo = document.getElementById('forecastInfo');
+            forecastInfo.innerHTML = '';
+
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+            const dailyForecasts = {};
+            data.list.forEach(forecast => {
+                const date = new Date(forecast.dt * 1000);
+                const dayOfWeek = days[date.getDay()];
+
+                if (!dailyForecasts[dayOfWeek]) {
+                    dailyForecasts[dayOfWeek] = {
+                        temperature: [],
+                        description: [],
+                        icon: [],
+                        humidity: [],
+                        windSpeed: []
+                    };
+                }
+
+                dailyForecasts[dayOfWeek].temperature.push(Math.round(forecast.main.temp - 273.15)); // Convert temperature from Kelvin to Celsius
+                dailyForecasts[dayOfWeek].description.push(forecast.weather[0].description);
+                dailyForecasts[dayOfWeek].icon.push(forecast.weather[0].icon);
+                dailyForecasts[dayOfWeek].humidity.push(forecast.main.humidity);
+                dailyForecasts[dayOfWeek].windSpeed.push(forecast.wind.speed);
+            });
+
+            for (const day in dailyForecasts) {
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                const dayOfWeek = document.createElement('h2');
+                dayOfWeek.textContent = day;
+
+                const temperatures = document.createElement('p');
+                temperatures.textContent = `Temperature: ${dailyForecasts[day].temperature.join('°C, ')}°C`;
+
+                const descriptions = document.createElement('p');
+                descriptions.textContent = `Description: ${dailyForecasts[day].description.join(', ')}`;
+
+                const humidity = document.createElement('p');
+                humidity.textContent = `Humidity: ${dailyForecasts[day].humidity.join('%, ')}%`;
+
+                const windSpeed = document.createElement('p');
+                windSpeed.textContent = `Wind Speed: ${dailyForecasts[day].windSpeed.join(' m/s, ')} m/s`;
+
+                const icon = document.createElement('img');
+                icon.src = `http://openweathermap.org/img/w/${dailyForecasts[day].icon[0]}.png`;
+                icon.alt = 'Weather Icon';
+                icon.classList.add('weather-icon');
+
+                card.appendChild(dayOfWeek);
+                card.appendChild(icon);
+                card.appendChild(temperatures);
+                card.appendChild(descriptions);
+                card.appendChild(humidity);
+                card.appendChild(windSpeed);
+
+                forecastInfo.appendChild(card);
+            }
+        }
+
+        function calculateWindChill(temperature, windSpeed) {
+            // Formula to calculate wind chill in Celsius
+            const windChill = 13.12 + (0.6215 * temperature) - (11.37 * Math.pow(windSpeed, 0.16)) + (0.3965 * temperature * Math.pow(windSpeed, 0.16));
+            return Math.round(windChill);
+        }
+    </script>
 </body>
 </html>

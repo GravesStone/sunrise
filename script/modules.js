@@ -10,9 +10,9 @@ export function loadHeader() {
     </div>
     <ul class="menu" id="menu">
       <li><a href="#">Home</a></li>
+      <li><a href="./weathersearch.html">Search</a></li>
+      <li><a href="#">Status</a></li>
       <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Contact</a></li>
     </ul>
   `;
 }
